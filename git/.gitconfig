@@ -1,0 +1,32 @@
+[credential]
+        helper = cache --timeout=3600	
+[user]
+        name = James Baker
+        email = jamesb@ionata.com.au
+[core]
+        editor = vi 
+[color]
+        ui = auto
+        interactive = auto
+[apply]
+        whitespace = strip
+[pack]
+        threads = 4
+[merge]
+        log = true
+[rebase]
+        autosquash = on
+[alias]
+        last = cat-file commit HEAD
+        restore = reset --hard HEAD
+        uncommit = reset --soft HEAD^
+        unstage = reset
+        sl = log --pretty=oneline --abbrev-commit --graph --decorate --all --date-order
+        ll = log --stat --abbrev-commit --graph --all --date-order
+        st = status -sb
+        co = checkout
+        ci = commit
+        quick-amend = !VISUAL=/bin/true git commit --amend
+        graphiv = "!f() { echo 'digraph git { node [fontsize = 10.0, shape = box];' ; git log --pretty='format:  %H -> { %P }' \"$@\" | sed 's/[0-9a-f]\\{40\\}/\"&\"/g' ; git log --pretty='format:  \"%H\" [ label = \"%h - %an - %ar\\n%f\" ]' \"$@\" ; echo '}'; }; f"
+        merge-to = "!f() { local DEST=$1 ; shift ; local CURRENT=`git rev-parse --abbrev-ref HEAD` && git checkout "$DEST" && git merge "$CURRENT" $@ && git checkout "$CURRENT"; unset CURRENT; }; f"
+        with = "!f() { local CURRENT=`git rev-parse --abbrev-ref HEAD` && git checkout $@  && bash && git checkout $CURRENT; }; f"
