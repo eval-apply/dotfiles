@@ -21,7 +21,7 @@ alias ll	ls -lAF
 
 set path = ($path /usr/local/opt/bin)
 setenv	EDITOR	vi
-setenv	PAGER	more
+setenv	PAGER	"less -R"
 
 if ($?prompt) then
 	# An interactive shell -- set some stuff up
