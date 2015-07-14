@@ -16,7 +16,10 @@
         log = true
 [rebase]
         autosquash = on
+[push]
+        default = simple
 [alias]
+        sync-fork = "!f() { git fetch upstream && git merge upstream/master && git push origin master; }; f"
         last = cat-file commit HEAD
         restore = reset --hard HEAD
         uncommit = reset --soft HEAD^
